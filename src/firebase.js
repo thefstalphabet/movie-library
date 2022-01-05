@@ -1,16 +1,18 @@
-import firebase from "firebase";
-import "firebase/firestore";
+// Imports that we need from firebase
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "@firebase/firestore";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Our web app firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBA8OvPDjVMimIoxZCB3UPVG6qnnc7tkGw",
-  authDomain: "movie-library-33705.firebaseapp.com",
-  projectId: "movie-library-33705",
-  storageBucket: "movie-library-33705.appspot.com",
-  messagingSenderId: "719626460237",
-  appId: "1:719626460237:web:7c8052f6bd67456dab5004",
-  measurementId: "G-0FR22SGY94",
+  apiKey: "AIzaSyBBigD-5Kc8T7XNJ9cCFvH3JzaIcDY1Mi8",
+  authDomain: "movie-library-61aa4.firebaseapp.com",
+  projectId: "movie-library-61aa4",
+  storageBucket: "movie-library-61aa4.appspot.com",
+  messagingSenderId: "979439936491",
+  appId: "1:979439936491:web:d2c636e946031cd9d92fae",
+  measurementId: "G-26NRRNR5KK",
 };
 
-firebase.initilizeApp(firebaseConfig);
-export default firebase;
+// Initilalize the firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
