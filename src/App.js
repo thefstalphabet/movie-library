@@ -10,8 +10,8 @@ export default function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Register/>}/>
+          <Route exact path="/dashboard" element={<Dashboard/>}/>
           <Route path="/lists" element={<List/>}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </Router>
     </Container>
