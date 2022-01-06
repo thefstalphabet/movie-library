@@ -30,6 +30,6 @@ To Start Server:
 
 `npm start`  
 
-To Visit App in your browser:
+To Visit App in Your Browser:
 
 `localhost:3000`  
