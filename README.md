@@ -1,6 +1,6 @@
 ## Movie Library
 
-An application used to search movies, series and create our own fav lists of the selected movies, build with React, Javascript, CSS, Firebase and some NPM packages
+An application used to search movies, Series and shows. In the app you can make your own favorite list of movies by adding to it on favorite.
 
 [Link to the app](https://movie-library-61aa4.web.app/dashboard)
 
