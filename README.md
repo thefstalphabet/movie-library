@@ -1,11 +1,35 @@
-# Movie Library
+## Movie Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application used to search movies, series and create our own fav lists of the selected movies, build with React, Javascript, CSS, Firebase and some NPM packages
 
-## To run this project localy
+[Link to the app](https://movie-library-61aa4.web.app/dashboard)
 
-1. Clone the movie-library repo in your local system.<br>
-2. In the project directory you can run: 'npm install' to install all the required packages that are required to run the app.<br>
-3. Then, in the current directory you can run: 'npm start' to run the app in the development mode.<br>
-4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.<br>
-5. The page will reload when you make changes. You may also see any lint errors in the console.<br>
+## Project Status
+
+The project is This project is currently in development. Users can login with google and search movies and shows as their needs.
+
+## Project Screen Shot(s)
+
+![Screenshot 2022-01-06 201055](https://user-images.githubusercontent.com/69709410/148400116-a977bb32-196c-49ed-bbfd-6060b07e2037.jpg)
+
+![Screenshot 2022-01-06 201042](https://user-images.githubusercontent.com/69709410/148400065-843c41e0-5331-412f-9aa1-9d08ddc22452.jpg)
+
+## Installation and Setup Instructions
+
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+
+Installation:
+
+`npm install`  
+
+To Run Test Suite:  
+
+`npm test`  
+
+To Start Server:
+
+`npm start`  
+
+To Visit App in your browser:
+
+`localhost:3000`  
