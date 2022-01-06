@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Card from "../../Components/Card";
 import { auth } from "../../firebase";
 import { Navigate } from "react-router-dom";
-import List from "../List/List";
 
 export default function Dashboard(props) {
   // State for search data
@@ -82,7 +81,6 @@ export default function Dashboard(props) {
               {result.map((ele, index) => {
                 return (
                   <Card
-                    id={index}
                     title={ele.Title}
                     type={ele.Type}
                     year={ele.Year}

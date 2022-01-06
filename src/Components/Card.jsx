@@ -5,7 +5,7 @@ export default function Card(props) {
   return (
     <Container>
       <Poster>
-        <img src={props.poster} alt="poster" />
+        {props.poster === "N/A" ? (<img src="/Assets/poster.png" alt="heart" />) : (<img src={props.poster} alt="poster" />)}
       </Poster>
       <Article>
         <h2>{props.title}</h2>
