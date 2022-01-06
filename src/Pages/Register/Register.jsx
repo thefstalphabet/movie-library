@@ -49,15 +49,16 @@ const Button = styled.button`
   outline: none;
   align-items: center;
   min-width: 20%;
-  padding: 10px;
+  padding: 7px;
   margin-top: 30px;
   font-size: 14px;
   font-weight: 600;
-  background-color: #f0f0f0;
+  background-color: #FFC312;
   display: flex;
   align-items: center;
   cursor: pointer;
   span {
     margin-left: 10px;
+    color: white;
   }
 `;

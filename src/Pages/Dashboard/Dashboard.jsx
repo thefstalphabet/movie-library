@@ -1,10 +1,11 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import styled from "styled-components";
 import Card from "../../Components/Card";
 import { auth } from "../../firebase";
 import { Navigate } from "react-router-dom";
+import List from "../List/List";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   // State for search data
   const [search, setSearch] = useState("");
   // State for search results
@@ -74,10 +75,7 @@ export default function Dashboard() {
         </Functions>
       </Header>
       <Body>
-        <WelcomeText>Welcome Back, {userInfo.displayName}!!</WelcomeText>
-        <Favorite>
-          <h2>Favorite Lists -</h2>
-        </Favorite>
+        <WelcomeText>Welcome Back, {userInfo.displayName}</WelcomeText>
         <SearchResult>
           {exist ? (
             <>
@@ -115,7 +113,7 @@ const Header = styled.div`
   }
 `;
 const Logo = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
 `;
 const SeachBar = styled.div`
@@ -127,12 +125,12 @@ const SeachBar = styled.div`
     padding: 7px 10px;
     font-size: 14px;
     width: 70%;
-    background-color: #e9e9e9;
+    background-color: #ececec;
   }
   img {
-    background-color: #adadad;
+    background-color: #ffc312;
+    width: 30px;
     padding: 2px 4px;
-    filter: invert();
     cursor: pointer;
   }
 `;
@@ -154,12 +152,13 @@ const Functions = styled.div`
 `;
 const LogoutButton = styled.button`
   font-size: 14px;
-  padding: 5px 10px;
-  background-color: #adadad;
+  padding: 7px 10px;
+  background-color: #ffc312;
   border: 1px solid black;
   font-weight: 600;
+  color: white;
+  border: none;
   cursor: pointer;
-  filter: invert();
 `;
 const WelcomeText = styled.div`
   font-size: 18px;
@@ -191,13 +190,5 @@ const SearchResult = styled.div`
     font-weight: 600;
     text-align: left;
     padding: 0 20px;
-  }
-`;
-const Favorite = styled.div`
-  margin-top: 30px;
-  padding: 0 20px;
-  h2 {
-    font-size: 18px;
-    font-weight: 600;
   }
 `;

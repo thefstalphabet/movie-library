@@ -20,6 +20,9 @@ export default function List() {
 
   return (
     <Container>
+      <Favorite>
+        <h2>Your Favorite Movies</h2>
+      </Favorite>
       {lists.map((ele) => {
         return (
           <div>
@@ -35,3 +38,11 @@ export default function List() {
 }
 // Styling
 const Container = styled.div``;
+const Favorite = styled.div`
+  margin-top: 30px;
+  padding: 0 20px;
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+`;
