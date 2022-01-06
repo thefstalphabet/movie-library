@@ -8,7 +8,7 @@ An application used to search movies, series and create our own fav lists of the
 
 The project is This project is currently in development. Users can login with google and search movies and shows as their needs.
 
-## Project Screen Shot(s)
+## Project Screen Shots
 
 ![Screenshot 2022-01-06 232831](https://user-images.githubusercontent.com/69709410/148429121-9ea014cc-6aa6-4b1d-8d5d-a764eccae598.jpg)
 
@@ -35,3 +35,7 @@ To Start Server:
 To Visit App in Your Browser:
 
 `localhost:3000`  
+
+## Tools That are Used to Develope the APP
+
+React, HTML, CSS, Javascript, Firebase, Some NPM Packages
