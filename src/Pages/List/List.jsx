@@ -26,9 +26,9 @@ export default function List() {
       {lists.map((ele) => {
         return (
           <div>
-            <h3>Name: {ele.title}</h3>
-            <h3>Type: {ele.type}</h3>
-            <h3>Year: {ele.year}</h3>
+            <h2>Name: {ele.title}</h2>
+            <p>Type: {ele.type}</p>
+            <p>Year: {ele.year}</p>
             <img src={ele.poster} alt="poster" />
           </div>
         );

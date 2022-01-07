@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import styled from "styled-components";
 import { auth } from "../../firebase";
 import { Navigate } from "react-router-dom";
@@ -10,19 +10,17 @@ export default function Register() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((response) => {
-        console.log(response);
         localStorage.setItem("user", "true");
-        localStorage.setItem("user_info", JSON.stringify(response.user));
+        localStorage.setItem("userCredentials", JSON.stringify(response.user));
         window.location.reload(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
   return (
     <Container>
-      {localStorage.getItem("user") === "true" && <Navigate to="/dashboard" />}
+      {localStorage.getItem("user") && <Navigate to="/dashboard" />}
       <h1>Welcome to the Movie Library</h1>
       <Button onClick={signInWithGoogle}>
         <img src="/Assets/google-icon.svg" alt="google-icon" />
@@ -53,12 +51,12 @@ const Button = styled.button`
   margin-top: 30px;
   font-size: 14px;
   font-weight: 600;
-  background-color: #FFC312;
+  background-color: var(--main-color);
   display: flex;
   align-items: center;
   cursor: pointer;
   span {
     margin-left: 10px;
-    color: white;
+    color: #fff;
   }
 `;

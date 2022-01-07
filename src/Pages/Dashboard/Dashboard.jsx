@@ -1,21 +1,20 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import styled from "styled-components";
 import Card from "../../Components/Card";
 import { auth } from "../../firebase";
 import { Navigate } from "react-router-dom";
 
 export default function Dashboard(props) {
-  // State for search data
+  // State for search value data
   const [search, setSearch] = useState("");
-  // State for search results
+  // State for searched results
   const [result, setResult] = useState([]);
-  // State to manage movies found or not
+  // State for search results, movies found or not
   const [exist, setExist] = useState(true);
-  // A function which call the movie API
+  // API calling function
   const getResult = () => {
-    fetch(
-      `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${search}`
-    ).then((response) =>
+    const URL = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${search}`;
+    fetch(URL).then((response) =>
       response
         .json()
         .then((data) => {
@@ -32,19 +31,9 @@ export default function Dashboard(props) {
         })
     );
   };
-
-  // Logout function
-  const logOut = () => {
-    auth.signOut().then(() => {
-      localStorage.setItem("user_details", "");
-      localStorage.setItem("user", "false");
-      window.location.reload(false);
-    });
-  };
-
   // Function that extract login user details from local storage
   const getData = () => {
-    let data = JSON.parse(localStorage.getItem("user_info"));
+    let data = JSON.parse(localStorage.getItem("userCredentials"));
     if (data) {
       return data;
     } else {
@@ -53,10 +42,16 @@ export default function Dashboard(props) {
   };
   // State for login user details
   const [userInfo, setUserInfo] = useState(getData());
-
+  // Logout function
+  const logOut = () => {
+    auth.signOut().then(() => {
+      localStorage.clear();
+      window.location.reload(false);
+    });
+  };
   return (
     <Container>
-      {localStorage.getItem("user") === "false" && <Navigate to="/" />}
+      {!localStorage.getItem("user") && <Navigate to="/" />}
       <Header>
         <Logo>MOVIE LIBRARY</Logo>
         <SeachBar>
@@ -74,7 +69,7 @@ export default function Dashboard(props) {
         </Functions>
       </Header>
       <Body>
-        <WelcomeText>Welcome Back, {userInfo.displayName}</WelcomeText>
+        <WelcomeText>Welcome Back, {userInfo.displayName} 🥳</WelcomeText>
         <SearchResult>
           {exist ? (
             <>
@@ -126,7 +121,7 @@ const SeachBar = styled.div`
     background-color: #ececec;
   }
   img {
-    background-color: #ffc312;
+    background-color: var(--main-color);
     width: 30px;
     padding: 2px 4px;
     cursor: pointer;
@@ -151,10 +146,10 @@ const Functions = styled.div`
 const LogoutButton = styled.button`
   font-size: 14px;
   padding: 7px 10px;
-  background-color: #ffc312;
+  background-color: var(--main-color);
   border: 1px solid black;
   font-weight: 600;
-  color: white;
+  color:  #fff;
   border: none;
   cursor: pointer;
 `;
