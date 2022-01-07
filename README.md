@@ -10,11 +10,11 @@ The project is This project is currently in development. Users can login with go
 
 ## Project Screen Shots
 
-![Screenshot 2022-01-06 232831](https://user-images.githubusercontent.com/69709410/148429121-9ea014cc-6aa6-4b1d-8d5d-a764eccae598.jpg)
+![Screenshot 2022-01-07 153932](https://user-images.githubusercontent.com/69709410/148528589-604d4638-e5d3-49b4-a165-968ea408fed6.jpg)
 
-![Screenshot 2022-01-06 232857](https://user-images.githubusercontent.com/69709410/148429146-e4b91b50-94f9-4270-8546-76eef335b04d.jpg)
+![Screenshot 2022-01-07 153952](https://user-images.githubusercontent.com/69709410/148528593-2acc970e-2501-4527-9e9e-819b60d7e308.jpg)
 
-![Screenshot 2022-01-06 232927](https://user-images.githubusercontent.com/69709410/148429164-14c2522c-6281-4a83-9c5e-eeb849572971.jpg)
+![Screenshot 2022-01-07 154019](https://user-images.githubusercontent.com/69709410/148528600-864fd5cf-72e0-401d-8d6d-cc16b8b3b239.jpg)
 
 ## Installation and Setup Instructions
 
