@@ -2,6 +2,8 @@
 
 An Application used to Search Movies, Series and Shows. In the App you can make your own Favorite List of Movies by adding to it on Favorite.
 
+[Project Link](https://movie-library-61aa4.web.app)
+
 ## Project Status
 
 The project is This project is currently in development. Users can login with google and search movies and shows as their needs.
