@@ -3,31 +3,32 @@ import styled from "styled-components";
 import Card from "../../Components/Card";
 import { auth } from "../../firebase";
 import { Navigate } from "react-router-dom";
+import AddFav from "../../Components/AddFav";
+import RemoveFav from "../../Components/RemoveFav";
 
 export default function Dashboard(props) {
   // State for search value data
-  const [search, setSearch] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   // State for searched results
-  const [result, setResult] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
   // State for search results, movies found or not
-  const [exist, setExist] = useState(true);
+  const [resultExist, setResultExist] = useState(true);
   // API calling function
   const getResult = () => {
-    const URL = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${search}`;
+    const URL = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${searchValue}`;
     fetch(URL).then((response) =>
       response
         .json()
         .then((data) => {
           if (data.Response === "False") {
-            setExist(false);
+            setResultExist(false);
           } else {
-            let array = data.Search;
-            setResult(array);
-            setExist(true);
+            setSearchResult(data.Search);
+            setResultExist(true);
           }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          console.log(error);
         })
     );
   };
@@ -41,7 +42,7 @@ export default function Dashboard(props) {
     }
   };
   // State for login user details
-  const [userInfo, setUserInfo] = useState(getData());
+  const [userCredentials, setUserCredentials] = useState(getData());
   // Logout function
   const logOut = () => {
     auth.signOut().then(() => {
@@ -49,8 +50,22 @@ export default function Dashboard(props) {
       window.location.reload(false);
     });
   };
+  // State for favorite movies lists
+  const [favorites, setFavorites] = useState([]);
+  // Function which add movie to favorite list
+  const addFavorite = (item) => {
+    const newItem = [...favorites, item];
+    setFavorites(newItem);
+  };
+  // Function which remove movie from favorite list
+  const removeFavorite = (item) => {
+    const newItem = favorites.filter(
+      (favorites) => favorites.imdbID !== item.imdbID
+    );
+    setFavorites(newItem);
+  };
   return (
-    <Container>
+    <>
       {!localStorage.getItem("user") && <Navigate to="/" />}
       <Header>
         <Logo>MOVIE LIBRARY</Logo>
@@ -58,42 +73,45 @@ export default function Dashboard(props) {
           <input
             placeholder="Search"
             type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
-          <img src="/Assets/search-icon.svg" alt="search" onClick={getResult} />
+          <img
+            src="/Assets/search-icon.svg"
+            alt="search-icon"
+            onClick={getResult}
+          />
         </SeachBar>
         <Functions>
           <LogoutButton onClick={logOut}>Logout</LogoutButton>
-          <img src={userInfo.photoURL} alt="profile" />
+          <img src={userCredentials.photoURL} alt="profile" />
         </Functions>
       </Header>
       <Body>
-        <WelcomeText>Welcome Back, {userInfo.displayName} 🥳</WelcomeText>
-        <SearchResult>
-          {exist ? (
-            <>
-              {result.map((ele, index) => {
-                return (
-                  <Card
-                    title={ele.Title}
-                    type={ele.Type}
-                    year={ele.Year}
-                    poster={ele.Poster}
-                  />
-                );
-              })}
-            </>
+        <WelcomeText>Welcome Back, {userCredentials.displayName} 🥳</WelcomeText>
+        <Favorite>
+          <Card
+            content={favorites}
+            addFavorite={removeFavorite}
+            addFavoriteFunctionality={RemoveFav}
+          />
+        </Favorite>
+        <SearchedResult>
+          {resultExist ? (
+            <Card
+              content={searchResult}
+              addFavorite={addFavorite}
+              addFavoriteFunctionality={AddFav}
+            />
           ) : (
             <span>Searched Movie not Found...</span>
           )}
-        </SearchResult>
+        </SearchedResult>
       </Body>
-    </Container>
+    </>
   );
 }
 // Styling
-const Container = styled.div``;
 const Header = styled.div`
   display: flex;
   justify-content: center;
@@ -130,12 +148,6 @@ const SeachBar = styled.div`
 const Functions = styled.div`
   display: flex;
   align-items: center;
-  a {
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    font-weight: 600;
-  }
   img {
     width: 40px;
     height: auto;
@@ -149,22 +161,23 @@ const LogoutButton = styled.button`
   background-color: var(--main-color);
   border: 1px solid black;
   font-weight: 600;
-  color:  #fff;
+  color: #fff;
   border: none;
   cursor: pointer;
 `;
 const WelcomeText = styled.div`
   font-size: 18px;
-  margin-top: 30px;
   padding: 0 20px;
   font-weight: 600;
+  margin-bottom: 30px;
 `;
-const Body = styled.div``;
-const SearchResult = styled.div`
-  margin-top: 30px;
+const Body = styled.div`
+  margin: 30px 0 30px 0;
+`;
+const SearchedResult = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
+  grid-gap: 35px;
   text-align: center;
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -185,3 +198,4 @@ const SearchResult = styled.div`
     padding: 0 20px;
   }
 `;
+const Favorite = styled(SearchedResult)``;

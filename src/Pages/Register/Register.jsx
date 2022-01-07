@@ -10,7 +10,7 @@ export default function Register() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((response) => {
-        localStorage.setItem("user", "true");
+        localStorage.setItem("user", "exist");
         localStorage.setItem("userCredentials", JSON.stringify(response.user));
         window.location.reload(false);
       })
