@@ -1,8 +1,6 @@
 ## Movie Library
 
-An application used to search movies, Series and shows. In the app you can make your own favorite list of movies by adding to it on favorite.
-
-[Link to the app](https://movie-library-61aa4.web.app/dashboard)
+An Application used to Search Movies, Series and Shows. In the App you can make your own Favorite List of Movies by adding to it on Favorite.
 
 ## Project Status
 
