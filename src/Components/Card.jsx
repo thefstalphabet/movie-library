@@ -34,16 +34,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
 `;
 const Poster = styled.div`
-  width: 250px;
   img {
     width: 100%;
+    object-fit: cover;
   }
 `;
 const Body = styled.div`
-  width: 250px;
   text-align: left;
   h2 {
     font-size: 18px;

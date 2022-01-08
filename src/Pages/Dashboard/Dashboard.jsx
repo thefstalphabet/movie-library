@@ -167,29 +167,28 @@ const LogoutButton = styled.button`
 `;
 const WelcomeText = styled.div`
   font-size: 18px;
-  padding: 0 20px;
   font-weight: 600;
   margin-bottom: 30px;
 `;
 const Body = styled.div`
-  margin: 30px 0 30px 0;
+  padding: 20px;
 `;
 const SearchedResult = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 35px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
   text-align: center;
   @media (max-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 800px) {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
   }
-  @media (max-width: 868px) {
+  @media (max-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5px;
-  }
-  @media (max-width: 536px) {
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 5px;
   }
   span {
     font-size: 18px;
