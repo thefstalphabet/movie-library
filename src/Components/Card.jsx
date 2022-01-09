@@ -5,9 +5,9 @@ export default function Card(props) {
   const Component = props.addFavoriteFunctionality;
   return (
     <>
-      {props.content.map((ele, idx) => {
+      {props.content.map((ele) => {
         return (
-          <Container id={idx}>
+          <Container>
             <Poster>
               {ele.Poster === "N/A" ? (
                 <img src="/Assets/poster.png" alt="favorite-icon" />
