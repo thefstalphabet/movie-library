@@ -12,6 +12,7 @@ export default function Register() {
       .then((response) => {
         localStorage.setItem("user", "exist");
         localStorage.setItem("userCredentials", JSON.stringify(response.user));
+        // localStorage.setItem("userFavoriteList", "");
         window.location.reload(false);
       })
       .catch((err) => {

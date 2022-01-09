@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import styled from "styled-components";
 import Card from "../../Components/Card";
 import { auth } from "../../firebase";
@@ -46,7 +46,8 @@ export default function Dashboard(props) {
   // Logout function
   const logOut = () => {
     auth.signOut().then(() => {
-      localStorage.clear();
+      localStorage.removeItem("userCredentials");
+      localStorage.removeItem("user");
       window.location.reload(false);
     });
   };
@@ -56,6 +57,7 @@ export default function Dashboard(props) {
   const addFavorite = (item) => {
     const newItem = [...favorites, item];
     setFavorites(newItem);
+    addFavoriteToLocalStorage(newItem);
   };
   // Function which remove movie from favorite list
   const removeFavorite = (item) => {
@@ -63,7 +65,20 @@ export default function Dashboard(props) {
       (favorites) => favorites.imdbID !== item.imdbID
     );
     setFavorites(newItem);
+    addFavoriteToLocalStorage(newItem);
   };
+  // Function which add list of movies to the local storage
+  const addFavoriteToLocalStorage = (item) => {
+    localStorage.setItem("userFavoriteList", JSON.stringify(item));
+  }
+  useEffect(()=>{
+    const userFavoriteList = JSON.parse(localStorage.getItem("userFavoriteList"))
+    if(!localStorage.getItem("userFavoriteList")){
+      return;
+    } else{
+      setFavorites(userFavoriteList);
+    }
+  }, [])
   return (
     <>
       {!localStorage.getItem("user") && <Navigate to="/" />}
@@ -104,7 +119,7 @@ export default function Dashboard(props) {
               addFavoriteFunctionality={AddFav}
             />
           ) : (
-            <span>Searched Movie not Found...</span>
+            <span>Movie not Found 🥺</span>
           )}
         </SearchedResult>
       </Body>
