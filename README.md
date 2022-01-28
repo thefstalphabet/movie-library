@@ -6,7 +6,7 @@ An Application used to Search Movies, Series and Shows. In the App you can make 
 
 ## Project Status
 
-The project is This project is currently in development. Users can login with google and search movies and shows as their needs.
+The project is currently in development. Users can login with google and search movies and shows as their needs.
 
 ## Project Screen Shots
 
